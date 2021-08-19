@@ -1,25 +1,20 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Update</h1>
-  <h1>{{ instrument['typeOfInstrument'] }}</h1>
-          <div class="about">{{ instrument['brand'] }} : {{ instrument['model'] }}{% endblock %}</div>
+  <h1>{% block title %}Edit "{{ instrument['brand'] }}" + "{{ instrument['model'] }}"{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
   <form method="post">
-    <form method="post">
-    <label for="typeOfInstrument">Type Of Instrument</label>
-    <input name="typeOfInstrument" id="typeOfInstrument" value="{{ request.form['typeOfInstrument'] }}">
-	<label for="brand">Brand</label>
-	<input name="brand" id="brand" value="{{ request.form['brand'] }}">
-    <label for="model">Model</label>
-	<input name="model" id="model" value="{{ request.form['model'] }}">
-    <textarea name="comments" id="comments">{{ request.form['comments'] }}</textarea>
+    <label for="typeOfinstrument">Instrument type</label>
+    <input name="typeOfinstrument" id="typeOfInstrument"
+      value="{{ request.form['typeOfInstrument'] or instrument['typeOfInstrument'] }}" required>
+    <label for="comments">Comments</label>
+    <textarea name="comments" id="comments">{{ request.form['comments'] or instrument['comments'] }}</textarea>
     <input type="submit" value="Save">
   </form>
   <hr>
-  <form action="{{ url_for('instrument.delete', id=instrument['id']) }}" method="post">
+  <form action="{{ url_for('index.delete', id=instrument['id']) }}" method="post">
     <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
   </form>
 {% endblock %}
