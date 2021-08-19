@@ -7,12 +7,16 @@
 {% block content %}
   <form method="post">
     <label for="typeOfInstrument">Type Of Instrument</label>
-    <input name="typeOfInstrument" id="typeOfInstrument" value="{{ request.form['typeOfInstrument'] }}">
+    <input name="typeOfInstrument" id="typeOfInstrument" value="{{ request.form['typeOfInstrument'] }}" required>	
 	<label for="brand">Brand</label>
-	<input name="brand" id="brand" value="{{ request.form['brand'] }}">
+	<input name="brand" id="brand" value="{{ request.form['brand'] }}" required>
+	
     <label for="model">Model</label>
-	<input name="model" id="model" value="{{ request.form['model'] }}">
+	<input name="model" id="model" value="{{ request.form['model'] }}" required>
+	
+	<label for="comments">Comments (optional): </label>
     <textarea name="comments" id="comments">{{ request.form['comments'] }}</textarea>
     <input type="submit" value="Save">
+	
   </form>
 {% endblock %}
