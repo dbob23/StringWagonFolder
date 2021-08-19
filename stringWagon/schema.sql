@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS instrument;
+
+CREATE TABLE instrument (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  brand TEXT NOT NULL,
+  model TEXT NOT NULL,
+  typeOfInstrument TEXT NOT NULL,
+  comments TEXT NOT NULL
+);

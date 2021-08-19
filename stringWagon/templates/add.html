@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}New Instrument{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="typeOfInstrument">Type Of Instrument</label>
+    <input name="typeOfInstrument" id="typeOfInstrument" value="{{ request.form['typeOfInstrument'] }}">
+	<label for="brand">Brand</label>
+	<input name="brand" id="brand" value="{{ request.form['brand'] }}">
+    <label for="model">Model</label>
+	<input name="model" id="model" value="{{ request.form['model'] }}">
+    <textarea name="comments" id="comments">{{ request.form['comments'] }}</textarea>
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}

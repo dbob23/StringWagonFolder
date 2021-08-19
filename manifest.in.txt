@@ -1,0 +1,4 @@
+include stringWagon/schema.sql
+graft stringWagon/static
+graft stringWagon/templates
+global-exclude *.pyc
