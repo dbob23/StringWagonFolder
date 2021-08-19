@@ -10,13 +10,13 @@
     <article class="instrument">
       <header>
         <div>
-          <h1>Type of instrument: {{ instrument['typeOfInstrument'] }}</h1>
+          <h1>{{ instrument['typeOfInstrument'] }}</h1>
           <div class="about"><b>Brand:</b> {{ instrument['brand'] }}</div>
 		  <div class="about"><b>Model:</b> {{ instrument['model'] }}</div>
         </div>
       </header>
 	  {% if instrument.comments %}
-      <p class="body"><b>Comments (optional)</b>: {{ instrument['comments'] }}</p>
+      <p class="body"><b>Comments: </> {{ instrument['comments'] }}</p>
 	  {% endif %}
 	  <a class="action" href="{{ url_for('index.update', id=instrument['id']) }}">Edit</a>
     </article>

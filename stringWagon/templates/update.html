@@ -1,29 +1,33 @@
 {% extends 'base.html' %}
 
 {% block header %}
+<link rel="stylesheet" href="../static/style.css" type="text/css" />
   <h1>{% block title %}Edit details for the {{ instrument['brand'] }} {{ instrument['model'] }} {{ instrument['typeOfInstrument'] }} here:{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
   <form method="post">
+ 
     <label for="typeOfInstrument">Instrument type</label>
-    <input name="typeOfInstrument" id="typeOfInstrument"
+    <input name="typeOfInstrument" id="title"
       value="{{ request.form['typeOfInstrument'] or instrument['typeOfInstrument'] }}" required>
 	  
 	  <label for="brand">Brand</label>
-    <input name="brand" id="brand"
+    <input name="brand" id="title"
       value="{{ request.form['brand'] or instrument['brand'] }}" required>
 	  
 	  
 	  <label for="model">model</label>
-    <input name="model" id="model"
+    <input name="model" id="title"
       value="{{ request.form['model'] or instrument['model'] }}" required>
 	  
 	  
-    <label for="comments">Comments</label>
-    <textarea name="comments" id="comments">{{ request.form['comments'] or instrument['comments'] }}</textarea>
+    <label for="comments">Comments (optional):</label>
+    <textarea name="comments" id="body">{{ request.form['comments'] or instrument['comments'] }}</textarea>
     <input type="submit" value="Save">
+	
   </form>
+ </article>
   <hr>
   <form action="{{ url_for('index.delete', id=instrument['id']) }}" method="post">
     <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this instrument from the String Wagon?');">
