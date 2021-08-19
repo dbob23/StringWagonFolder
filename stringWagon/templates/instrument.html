@@ -10,9 +10,11 @@
     <article class="instrument">
       <header>
         <div>
-          <h1>{{ instrument['typeOfInstrument'] }}</h1>
+          <!-- <h1>{{ instrument['typeOfInstrument'] }}</h1> -->
+		  <div class="about">{{ instrument['typeOfInstrument'] }}</div>
           <div class="about"><b>Brand:</b> {{ instrument['brand'] }}</div>
 		  <div class="about"><b>Model:</b> {{ instrument['model'] }}</div>
+		  <!-- <div>{{ instrument['typeOfInstrument'] }}</div> -->
         </div>
       </header>
 	  {% if instrument.comments %}
