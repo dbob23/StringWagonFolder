@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Edit "{{ instrument['brand'] }}" + "{{ instrument['model'] }}"{% endblock %}</h1>
+  <h1>{% block title %}Edit details for the {{ instrument['brand'] }} {{ instrument['model'] }} {{ instrument['typeOfInstrument'] }} here:{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
@@ -26,6 +26,6 @@
   </form>
   <hr>
   <form action="{{ url_for('index.delete', id=instrument['id']) }}" method="post">
-    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this instrument from the String Wagon?');">
   </form>
 {% endblock %}

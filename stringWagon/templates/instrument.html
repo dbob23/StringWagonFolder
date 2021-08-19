@@ -10,15 +10,15 @@
     <article class="instrument">
       <header>
         <div>
-          <h1>{{ instrument['typeOfInstrument'] }}</h1>
-          <div class="about">{{ instrument['brand'] }} : {{ instrument['model'] }}</div>
+          <h1>Type of instrument: {{ instrument['typeOfInstrument'] }}</h1>
+          <div class="about"><b>Brand:</b> {{ instrument['brand'] }}</div>
+		  <div class="about"><b>Model:</b> {{ instrument['model'] }}</div>
         </div>
-          
-  
-<a class="action" href="{{ url_for('index.update', id=instrument['id']) }}">Edit</a>
-
       </header>
-      <p class="body">{{ instrument['comments'] }}</p>
+	  {% if instrument.comments %}
+      <p class="body"><b>Comments (optional)</b>: {{ instrument['comments'] }}</p>
+	  {% endif %}
+	  <a class="action" href="{{ url_for('index.update', id=instrument['id']) }}">Edit</a>
     </article>
     {% if not loop.last %}
       <hr>
