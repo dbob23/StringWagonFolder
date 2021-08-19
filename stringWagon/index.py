@@ -44,18 +44,19 @@ def create():
     return render_template('add.html')     
             
 def get_instrument(id):
-    instrument = get_db().execute(
+    db = get_db()
+    instrument = db.execute(
         'SELECT i.id, typeOfInstrument, brand, model, comments'
-        ' FROM instrument '
-        ' WHERE i.id = ?',
+        ' FROM instrument i '
+        ' WHERE id = ?',
         (id,)
     ).fetchone()
 
     if instrument is None:
         abort(404, f"Instrument id {id} doesn't exist.")
 
-    return instrument            
-
+    return instrument
+    
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 def update(id):
     instrument = get_instrument(id)
@@ -82,6 +83,8 @@ def update(id):
             db.commit()
             return redirect('/')
             
+    return render_template('update.html', instrument=instrument)        
+            
 @bp.route('/<int:id>/delete', methods=('POST',))
 def delete(id):
     get_instrument(id)
@@ -90,4 +93,4 @@ def delete(id):
     db.commit()
     return redirect('/')           
 
-    return render_template('index/update.html', instrument=instrument)   
+    return render_template('update.html', instrument=instrument)   
