@@ -16,7 +16,7 @@
         </div>
       </header>
 	  {% if instrument.comments %}
-      <p class="body"><b>Comments: </> {{ instrument['comments'] }}</p>
+      <p class="body"><b>Comments: </b> {{ instrument['comments'] }}</p>
 	  {% endif %}
 	  <a class="action" href="{{ url_for('index.update', id=instrument['id']) }}">Edit</a>
     </article>
